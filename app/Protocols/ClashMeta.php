@@ -189,6 +189,14 @@ class ClashMeta extends AbstractProtocol
         $array['cipher'] = data_get($server['protocol_settings'], 'cipher');
         $array['password'] = data_get($server, 'password', $password);
         $array['udp'] = true;
+        $array['smux'] = [
+            'enabled' => true,       // 启用 smux
+            'protocol' => 'h2mux',      // 使用 h2 协议 (推荐) 或 smux
+            'max-connections' => 4,  // 最大连接数
+            'min-streams' => 4,      // 最小流
+            'padding' => false
+        ];
+
         if (data_get($protocol_settings, 'plugin') && data_get($protocol_settings, 'plugin_opts')) {
             $plugin = data_get($protocol_settings, 'plugin');
             $pluginOpts = data_get($protocol_settings, 'plugin_opts', '');
