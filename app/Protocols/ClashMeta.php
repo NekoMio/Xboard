@@ -192,8 +192,8 @@ class ClashMeta extends AbstractProtocol
         $array['smux'] = [
             'enabled' => true,       // 启用 smux
             'protocol' => 'h2mux',      // 使用 h2 协议 (推荐) 或 smux
-            'max-connections' => 4,  // 最大连接数
-            'min-streams' => 4,      // 最小流
+            'max-connections' => 2,  // 最大连接数
+            'min-streams' => 2,      // 最小流
             'padding' => false
         ];
 
