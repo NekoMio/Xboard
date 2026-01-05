@@ -82,6 +82,12 @@ class ServerService
                 'device_limit'
             ])
             ->get();
+        if ($node->type !== Server::TYPE_SHADOWSOCKS) {
+            $users = $users->map(function ($user) {
+                data_set($user, 'speed_limit', null);
+                return $user;
+            });
+        }
         return HookManager::filter('server.users.get', $users, $node);
     }
 
