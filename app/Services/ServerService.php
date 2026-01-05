@@ -82,9 +82,9 @@ class ServerService
                 'device_limit'
             ])
             ->get();
-        if ($node->type !== 'shadowsocks') {
+        if ($node->type !== Server::TYPE_SHADOWSOCKS) {
             $users = $users->map(function ($user) {
-                $user->speed_limit = null;
+                data_set($user, 'speed_limit', null);
                 return $user;
             });
         }
