@@ -139,6 +139,7 @@ class Server extends Model
             'tls' => ['type' => 'integer', 'default' => 0],
             'tls_settings' => ['type' => 'array', 'default' => null],
             'flow' => ['type' => 'string', 'default' => null],
+            'decryption' => ['type' => 'string', 'default' => 'none'],
             'network' => ['type' => 'string', 'default' => null],
             'network_settings' => ['type' => 'array', 'default' => null],
             'reality_settings' => [

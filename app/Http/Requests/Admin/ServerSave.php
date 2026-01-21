@@ -47,6 +47,7 @@ class ServerSave extends FormRequest
             'network' => 'required|string',
             'network_settings' => 'nullable|array',
             'flow' => 'nullable|string',
+            'decryption' => 'nullable|string',
             'tls_settings.server_name' => 'nullable|string',
             'tls_settings.allow_insecure' => 'nullable|boolean',
             'reality_settings.allow_insecure' => 'nullable|boolean',

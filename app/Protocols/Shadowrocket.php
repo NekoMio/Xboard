@@ -142,7 +142,8 @@ class Shadowrocket extends AbstractProtocol
         $config = [
             'tfo' => 1,
             'remark' => $server['name'],
-            'alterId' => 0
+            'alterId' => 0,
+            'decryption' => data_get($protocol_settings, 'decryption', 'none')
         ];
 
         // 判断是否开启xtls
