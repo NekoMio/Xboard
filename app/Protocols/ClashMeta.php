@@ -308,7 +308,7 @@ class ClashMeta extends AbstractProtocol
             'alterId' => 0,
             'cipher' => 'auto',
             'udp' => true,
-            'decryption' => data_get($protocol_settings, 'decryption', 'none'),
+            'encryption' => data_get($protocol_settings, 'encryption', 'none'),
             'flow' => data_get($protocol_settings, 'flow'),
             'tls' => false
         ];
