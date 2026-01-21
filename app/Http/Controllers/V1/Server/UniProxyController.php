@@ -127,7 +127,12 @@ class UniProxyController extends Controller
                 ...$baseConfig,
                 'tls' => (int) $protocolSettings['tls'],
                 'flow' => $protocolSettings['flow'],
-                'decryption' => data_get($protocolSettings, 'decryption', 'none'),
+                'encryption' => explode('.', data_get($protocolSettings, 'decryption', 'none'))[0] ?? 'none',
+                'encryption_settings' => [
+                    'mode' => explode('.', data_get($protocolSettings, 'decryption', 'none'))[1] ?? '',
+                    'ticket' => explode('.', data_get($protocolSettings, 'decryption', 'none'))[2] ?? '',
+                    'private_key' => explode('.', data_get($protocolSettings, 'decryption', 'none'))[3] ?? '',
+                ],
                 'tls_settings' =>
                         match ((int) $protocolSettings['tls']) {
                             2 => $protocolSettings['reality_settings'],
