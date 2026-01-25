@@ -112,8 +112,8 @@ class StatUserJob implements ShouldQueue
                 'server_rate' => $this->server['rate'],
                 'record_at' => $recordAt,
                 'record_type' => $this->recordType,
-                'u' => ($v[0] * $this->server['rate']),
-                'd' => ($v[1] * $this->server['rate']),
+                'u' => (int) round($v[0] * $this->server['rate']),
+                'd' => (int) round($v[1] * $this->server['rate']),
                 'created_at' => time(),
                 'updated_at' => time(),
             ],
@@ -133,8 +133,8 @@ class StatUserJob implements ShouldQueue
     {
         $table = (new StatUser())->getTable();
         $now = time();
-        $u = ($v[0] * $this->server['rate']);
-        $d = ($v[1] * $this->server['rate']);
+        $u = (int) round($v[0] * $this->server['rate']);
+        $d = (int) round($v[1] * $this->server['rate']);
 
         $sql = "INSERT INTO {$table} (user_id, server_rate, record_at, record_type, u, d, created_at, updated_at)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)

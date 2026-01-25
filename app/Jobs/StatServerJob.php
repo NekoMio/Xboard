@@ -56,6 +56,9 @@ class StatServerJob implements ShouldQueue
             $u += $traffic[0];
             $d += $traffic[1];
         }
+        
+        $u = (int) round($u);
+        $d = (int) round($d);
 
         try {
             $this->processServerStat($u, $d, $recordAt);
@@ -116,8 +119,8 @@ class StatServerJob implements ShouldQueue
                 'server_id' => $this->server['id'],
                 'server_type' => $this->protocol,
                 'record_type' => $this->recordType,
-                'u' => $u,
-                'd' => $d,
+                'u' => (int) round($u),
+                'd' => (int) round($d),
                 'created_at' => time(),
                 'updated_at' => time(),
             ],
@@ -137,6 +140,9 @@ class StatServerJob implements ShouldQueue
     {
         $table = (new StatServer())->getTable();
         $now = time();
+        
+        $u = (int) round($u);
+        $d = (int) round($d);
 
         // Use parameter binding to avoid SQL injection and keep maintainability
         $sql = "INSERT INTO {$table} (record_at, server_id, server_type, record_type, u, d, created_at, updated_at)
