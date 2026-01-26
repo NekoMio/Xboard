@@ -125,7 +125,7 @@ class General extends AbstractProtocol
         $config = [
             'mode' => 'multi', //grpc传输模式
             'security' => '', //传输层安全 tls/reality
-            'encryption' => 'none', //加密方式
+            'encryption' => $protocol_settings['encryption'] ?? 'none', //加密方式
             'type' => $server['protocol_settings']['network'], //传输协议
             'flow' => $protocol_settings['flow'] ? $protocol_settings['flow'] : null,
         ];
